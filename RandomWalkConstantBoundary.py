@@ -13,7 +13,7 @@ import datetime
 X_locs = 2*30
 Max_points = 1000
 Min_points = 0
-N_frames = 100
+N_frames = 1000
 
 X = np.linspace(0,X_locs-1,X_locs,dtype=int)
 YA = Max_points*np.ones(int(X_locs/2),dtype=int)
@@ -37,7 +37,9 @@ for i in range(0,N_frames):
     now1 = datetime.datetime.now() #get the current time and print elapsed time
     print("{} out of {} frames; elapsed minutes = {: .2f}".format(i,N_frames,60*\
     (now1.hour-now0.hour)+(now1.minute-now0.minute )+(now1.second\
-    -now0.second)/60))      
+    -now0.second)/60))
+  #1/3 chance the phantom bin spills into the domain at the left      
+  Z[0]= Max_points/3      
   for j in range(X_locs): #run through all the x-locations in the profile
     if j == 0: #treat the first x-location as a special case
       for k in range(Y[j]): #decide whether to move each particle at first loc
