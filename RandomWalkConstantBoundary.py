@@ -10,10 +10,10 @@ from numpy.random import random as rng #import a psuedo-random-number generato
 from numpy.random import seed
 import datetime 
 
-X_locs = 2*15
-Max_points = 10000
+X_locs = 2*30
+Max_points = 1000
 Min_points = 0
-N_frames = 10
+N_frames = 100
 
 X = np.linspace(0,X_locs-1,X_locs,dtype=int)
 YA = Max_points*np.ones(int(X_locs/2),dtype=int)
@@ -37,22 +37,18 @@ for i in range(0,N_frames):
     now1 = datetime.datetime.now() #get the current time and print elapsed time
     print("{} out of {} frames; elapsed minutes = {: .2f}".format(i,N_frames,60*\
     (now1.hour-now0.hour)+(now1.minute-now0.minute )+(now1.second\
-    -now0.second)/60))
+    -now0.second)/60))      
   for j in range(X_locs): #run through all the x-locations in the profile
     if j == 0: #treat the first x-location as a special case
       for k in range(Y[j]): #decide whether to move each particle at first loc
-        if rng() < 0.6667: Z[j] += 1 #no, keep the particle at first loc
-        else: 
-            Z[j+1] += 1 #yes, move the particle right one locZ[j] += 1
-            Z[j] += 1 #keep the first position value constant
-    elif j == 1: #make sure the second location doesn't go back into the first
-        for k in range(Y[j]):
-            if rng() < 0.6667: Z[j] += 1 #keep the particle where it is
-            else: Z[j+1] += 1 #move the particle to the right
-    elif j == X_locs-2: #prevent the last bin from increasing in concentration
-      for k in range(Y[j]): #decide whether to move each particle at the second to last loc
-        if rng() < 0.6667: Z[j] += 1 #no, keep the particle at last loc
-        else: Z[j-1] += 1 #yes, move the particle left one loc
+        rndo=rng()
+        if rndo < 0.3333: Z[j] += 1 #no, keep the particle at first loc
+        elif rndo > .6667: Z[j+1] += 1 #yes, move the particle right one loc
+    elif j == X_locs-1: #also treat the last x-location as a special case
+      for k in range(Y[j]): #decide whether to move each particle at last loc
+        rndo = rng()
+        if rndo < 0.3333: Z[j] += 1 #no, keep the particle at last loc
+        elif rndo > .6667: Z[j-1] += 1 #yes, move the particle left one loc
     else:
       for k in range(Y[j]): #decide how to move each particle at locationj
         rn=rng()
@@ -106,8 +102,3 @@ plt.ylabel('Spread of Profile (3/4-way to 1/4-way down)')
 plt.title("Simulation of 1-D Diffusion Starting from a Square Wave") 
 #plt.savefig("Example4_1b.png", dpi=200) 
 """
-
-
-
-
-
