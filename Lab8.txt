@@ -1,0 +1,12 @@
+What is the effect of accounting for potassium binding on estimation of
+free magnesium ion?
+
+When potassium binding is no longer considered (Kk_ATP,Pi,ADP,CrP = infinity in the code, effectively making potassium 0) there is no change in the estimation of the free magnesium ion (1.227241082701891e-06 in both cases where potassium binding is and isn't considered). This is because the amount of magnesium binding does not rely on potassium because magnesium does not bind with the potassium. 
+
+
+How does potassium binding influence the apparent equilibrium
+constant?
+
+The apparent equilibrium constant increases by about 30 million (around 10% as we discussed in class). This is because equilibrium constants are a ratio of concentrations products and reactants in an equation, and since potassium has the ability to bind to those products and reactants (ATP, ADP, CrP and Pi) it does change the final ratio of products and reactants that are in the form we are interested in for our equilibrium constant.
+
+
