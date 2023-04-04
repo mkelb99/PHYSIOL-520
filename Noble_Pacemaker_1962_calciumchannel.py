@@ -74,9 +74,9 @@ def dXdT(t, X):
     g_K2 = 1.2 * n**4                           # K ch outwrd rect cond (eqn 6)
     i_K = (g_K1+g_K2) * (V - Ek)               # K channel current (eqn 10)
 	# Potassium channel n gate (Note rates are in 1/ms)
-    alpha_n = (0.01 * ((-1*V) - 50)) /\
+    alpha_n = (0.0001 * ((-1*V) - 50)) /\
         (np.exp(((-1*V) - 50) / 10) - 1)        # K chnl n gt opn rate (eqn 8)
-    beta_n = 0.125 * np.exp(((-1*V) - 90) / 80) # K ch n gate open rate (eqn 9)
+    beta_n = 0.002 * np.exp(((-1*V) - 90) / 80) # K ch n gate open rate (eqn 9)
     dndt = (alpha_n * (1-n)) - (beta_n * n)     # RoC K channel n gate (eqn 7)
 
     #L-type calcium channel
